@@ -11,8 +11,8 @@
     <title>Home</title>
 </head>
 <body>
-<a href="/user/reg">Registration</a>
-<a href="/user/auth">Authorization</a>
-<a href="/user/logout">Logout</a>
+<a href="/user/registration">Registration</a>
+<a href="/user/authorization">Authorization</a>
+<%--<a href="/user/logout">Logout</a>--%>
 </body>
 </html>

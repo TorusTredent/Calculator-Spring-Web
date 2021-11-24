@@ -1,4 +1,4 @@
-package by.tms;
+package by.tms.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -15,6 +15,6 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
 
     @Override
     protected String[] getServletMappings() {
-        return new String[]{"/"}; // localhost:8080/
+        return new String[]{"/"};
     }
 }

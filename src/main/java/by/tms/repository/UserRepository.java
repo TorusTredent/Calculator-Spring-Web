@@ -11,4 +11,51 @@ public class UserRepository {
 
     private final List<User> userList = new ArrayList<>();
 
+    public boolean isExistUsername(String username) {
+        for (User list : userList) {
+            if (username.equals(list.getUsername())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void addUser(User user) {
+        userList.add(user);
+    }
+
+    public User getUserUsername(String username) {
+        for (User user : userList) {
+            if (user.getUsername().equals(username)){
+                return user;
+            }
+        }
+        return null;
+    }
+
+
+    public User getUserById(double userId) {
+        for (User list : userList) {
+            if (list.getId() == userId) {
+                return list;
+            }
+        }
+        return null;
+    }
+
+    public void changePassword(double userId, String newPassword) {
+        for (User list : userList) {
+            if (list.getId() == userId) {
+                list.setPassword(newPassword);
+            }
+        }
+    }
+
+    public void changeUsername(double userId, String newUsername) {
+        for (User list : userList) {
+            if (list.getId() == userId) {
+                list.setUsername(newUsername);
+            }
+        }
+    }
 }
