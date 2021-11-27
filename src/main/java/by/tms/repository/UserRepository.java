@@ -24,7 +24,7 @@ public class UserRepository {
         userList.add(user);
     }
 
-    public User getUserUsername(String username) {
+    public User getUserByUsername(String username) {
         for (User user : userList) {
             if (user.getUsername().equals(username)){
                 return user;
@@ -34,28 +34,28 @@ public class UserRepository {
     }
 
 
-    public User getUserById(double userId) {
-        for (User list : userList) {
-            if (list.getId() == userId) {
-                return list;
-            }
-        }
-        return null;
-    }
-
-    public void changePassword(double userId, String newPassword) {
-        for (User list : userList) {
-            if (list.getId() == userId) {
-                list.setPassword(newPassword);
-            }
-        }
-    }
-
-    public void changeUsername(double userId, String newUsername) {
-        for (User list : userList) {
-            if (list.getId() == userId) {
-                list.setUsername(newUsername);
-            }
-        }
-    }
+//    public User getUserById(long userId) {
+//        for (User list : userList) {
+//            if (list.getId() == userId) {
+//                return list;
+//            }
+//        }
+//        return null;
+//    }
+//
+//    public void changePassword(long userId, String newPassword) {
+//        for (User list : userList) {
+//            if (list.getId() == userId) {
+//                list.setPassword(newPassword);
+//            }
+//        }
+//    }
+//
+//    public void changeUsername(long userId, String newUsername) {
+//        for (User list : userList) {
+//            if (list.getId() == userId) {
+//                list.setUsername(newUsername);
+//            }
+//        }
+//    }
 }

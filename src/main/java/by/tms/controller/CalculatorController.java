@@ -1,6 +1,5 @@
 package by.tms.controller;
 
-import by.tms.entity.Operation;
 import by.tms.entity.User;
 import by.tms.service.CalculatorService;
 import org.springframework.stereotype.Controller;
@@ -58,6 +57,7 @@ public class CalculatorController {
         model.addAttribute("operationList", null);
         return "calc";
     }
+
 
     private boolean isValueDouble(String num1, String num2) {
         try {
