@@ -2,9 +2,9 @@ package by.tms.service;
 
 import by.tms.entity.User;
 import by.tms.repository.UserRepository;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class UserService {
 
     private final UserRepository userRepository;

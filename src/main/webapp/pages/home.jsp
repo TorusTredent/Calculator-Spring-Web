@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: Lenovo
@@ -11,8 +13,13 @@
     <title>Home</title>
 </head>
 <body>
-<a href="/user/registration">Registration</a>
-<a href="/user/authorization">Authorization</a>
-<%--<a href="/user/logout">Logout</a>--%>
+<c:if test="${user == null}">
+    <a href="${pageContext.request.contextPath}/user/registration">Registration</a>
+    <a href="${pageContext.request.contextPath}/user/authorization">Authorization</a>
+</c:if>
+<c:if test="${user != null}">
+    <a href="${pageContext.request.contextPath}/calculator/calculate">Calculator</a>
+    <a href="${pageContext.request.contextPath}/user/logout">Logout</a>
+</c:if>
 </body>
 </html>

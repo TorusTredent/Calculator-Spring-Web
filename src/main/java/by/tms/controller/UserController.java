@@ -51,10 +51,16 @@ public class UserController {
     public String registration(User user, Model model) {
         if (!userService.isExistUsername(user.getUsername())){
             userService.registrationUser(user);
-            return "redirect:/user/authorization";
+            return "redirect:authorization";
         } else {
             model.addAttribute("alert", "Username is already used");
         }
         return "registration";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession httpSession){
+        httpSession.invalidate();
+        return "redirect:/";
     }
 }

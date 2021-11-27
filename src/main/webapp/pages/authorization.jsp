@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Lenovo
@@ -11,11 +12,17 @@
     <title>Authorization</title>
 </head>
 <body>
-<form action="/user/authorization" method="post">
+<form action="${pageContext.request.contextPath}/user/authorization" method="post">
     <input type="text" name="username" placeholder="Username">
     <input type="password" name="password" placeholder="Password">
     <button>Submit</button>
 </form>
-<p>${message}</p>
+<a href="/"><button>Back</button></a>
+<c:if test="${alert != null}">
+    ${alert}
+</c:if>
+<c:if test="${message != null}">
+    ${message}
+</c:if>
 </body>
 </html>

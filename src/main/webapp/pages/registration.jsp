@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Lenovo
@@ -11,12 +12,15 @@
     <title>Registration</title>
 </head>
 <body>
-<form action="/user/registration" method="post">
+<form action="${pageContext.request.contextPath}/user/registration" method="post">
     <input type="text" name="name" placeholder="Name">
     <input type="text" name="username" placeholder="Username">
     <input type="password" name="password" placeholder="Password">
     <button>Submit</button>
 </form>
-<p>${message}</p>
+<a href="/"><button>Back</button></a>
+<c:if test="${alert != null}">
+    ${alert}
+</c:if>
 </body>
 </html>
