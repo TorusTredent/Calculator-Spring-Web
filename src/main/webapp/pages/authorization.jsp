@@ -21,8 +21,5 @@
 <c:if test="${alert != null}">
     ${alert}
 </c:if>
-<c:if test="${message != null}">
-    ${message}
-</c:if>
 </body>
 </html>
