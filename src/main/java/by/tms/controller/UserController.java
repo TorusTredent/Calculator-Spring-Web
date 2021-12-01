@@ -1,14 +1,19 @@
 package by.tms.controller;
 
+import by.tms.dto.GetUserDto;
+import by.tms.dto.SaveUserDto;
 import by.tms.entity.User;
 import by.tms.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/user")
@@ -21,16 +26,22 @@ public class UserController {
     }
 
     @GetMapping("/authorization")
-    public String authorization() {
+    public String authorization(Model model) {
+        model.addAttribute("newUser", new User());
         return "authorization";
     }
 
     @PostMapping("/authorization")
-    public String authorization(String username, String password, HttpSession httpSession, Model model) {
-        User user = userService.getUserUsername(username);
-        if (user != null) {
-            if (user.getPassword().equals(password)) {
-                httpSession.setAttribute("user", user);
+    public String authorization(@ModelAttribute("newUser") @Valid GetUserDto getUserDto,
+                                BindingResult bindingResult, HttpSession httpSession, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("newUser", getUserDto);
+            return "authorization";
+        }
+        User receivedUser = userService.getUserUsername(getUserDto.getUsername());
+        if (receivedUser != null) {
+            if (receivedUser.getPassword().equals(getUserDto.getPassword())) {
+                httpSession.setAttribute("user", receivedUser);
                 return "redirect:/";
             } else {
                 model.addAttribute("alert", "Incorrect password entered");
@@ -41,15 +52,20 @@ public class UserController {
         return "authorization";
     }
 
-
     @GetMapping("/registration")
-    public String registration() {
+    public String registration(Model model) {
+        model.addAttribute("newUser", new User());
         return "registration";
     }
 
     @PostMapping("/registration")
-    public String registration(User user, Model model) {
-        if (!userService.isExistUsername(user.getUsername())){
+    public String registration(@ModelAttribute("newUser") @Valid SaveUserDto saveUserDto, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("newUser", saveUserDto);
+            return "registration";
+        }
+        if (!userService.isExistUsername(saveUserDto.getUsername())){
+            User user = new User(saveUserDto.getName(), saveUserDto.getUsername(), saveUserDto.getPassword());
             userService.registrationUser(user);
             return "redirect:authorization";
         } else {

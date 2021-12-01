@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: Lenovo
@@ -12,11 +13,17 @@
     <title>Authorization</title>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/user/authorization" method="post">
-    <input type="text" name="username" placeholder="Username">
-    <input type="password" name="password" placeholder="Password">
-    <button>Submit</button>
-</form>
+<s:form action="/user/authorization" method="post" modelAttribute="newUser">
+    <s:input path="username" placeholder="Username"/>
+    <br>
+    <s:errors path="username"/>
+    <br>
+    <s:input path="password" placeholder="Password"/>
+    <br>
+    <s:errors path="password"/>
+    <br>
+    <s:button>Submit</s:button>
+</s:form>
 <a href="/"><button>Back</button></a>
 <c:if test="${alert != null}">
     ${alert}

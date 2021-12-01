@@ -18,7 +18,7 @@
     <a href="${pageContext.request.contextPath}/user/authorization">Authorization</a>
 </c:if>
 <c:if test="${user != null}">
-    <a href="${pageContext.request.contextPath}/calculator/calculate">Calculator</a>
+    <a href="${pageContext.request.contextPath}/calculate">Calculator</a>
     <a href="${pageContext.request.contextPath}/user/logout">Logout</a>
 </c:if>
 </body>

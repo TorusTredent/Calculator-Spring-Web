@@ -16,13 +16,13 @@ public class CalculatorRepository {
         operationList.addLast(operation);
     }
 
-    public List<String> getOperationList(long userId) {
-        List<String> list = new ArrayList<>();
+    public LinkedList<String> getOperationList(long userId) {
+        LinkedList<String> list = new LinkedList<>();
         for(Operation operation : operationList) {
             if (operation.getUserId() == userId) {
-                String oper = operation.getOperation() + "(" + operation.getNum1() + ", " + operation.getNum2() + ") "
+                String oper = operation.getManipulation() + "(" + operation.getNum1() + ", " + operation.getNum2() + ") "
                         + " = " + operation.getResult();
-                list.add(oper);
+                list.addLast(oper);
             }
         }
         return list;

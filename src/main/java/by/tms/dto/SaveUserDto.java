@@ -1,13 +1,8 @@
-package by.tms.entity;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+package by.tms.dto;
 
 import javax.validation.constraints.NotBlank;
 
-@Component
-public class User {
-    private long id;
+public class SaveUserDto {
 
     @NotBlank(message = "Empty field")
     private String name;
@@ -18,22 +13,10 @@ public class User {
     @NotBlank(message = "Empty field")
     private String password;
 
-    @Autowired
-    public User() {
-    }
-
-    public User(String name, String username, String password) {
+    public SaveUserDto(String name, String username, String password) {
         this.name = name;
         this.username = username;
         this.password = password;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
